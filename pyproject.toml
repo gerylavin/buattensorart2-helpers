@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "buattensorart2-helpers"
-version = "0.1.3"
+version = "0.1.0"
 description = "Personal helper scripts for myself"
 readme = "README.md"
 authors = [

@@ -25,6 +25,7 @@ class myDataset(BaseModel):
         match self.machine:
             case 2:
                 self.dataset_local_path=f"./{self.dataset_local_path.rstrip('/').split('/')[-1]}"
+        return self
     
     @property
     def dataset_name(self) -> str:
