@@ -1,0 +1,38 @@
+Metadata-Version: 2.4
+Name: buattensorart2-helpers
+Version: 0.1.3
+Summary: Personal helper scripts for myself
+Author-email: buattensorart2 <buattensorart2@gmail.com>
+License-Expression: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: huggingface_hub==1.26.1
+Requires-Dist: pydantic==2.13.5
+Requires-Dist: tqdm==4.70.0
+Dynamic: license-file
+
+\# Personal AI Toolkit Helpers (Modal.com)
+
+
+
+Private helper functions tailored for myself only.
+
+
+
+\## Purpose
+
+Custom utility scripts built exclusively for personal fine-tuning pipelines, handling dataset preparations, environment configs, Modal.com volume syncs, etc.
+
+
+
+\## Installation
+
+Since this is a private personal package hosted on PyPI:
+
+```bash
+
+pip install modalostris-helpers
+
