@@ -3,7 +3,7 @@ import os
 from tqdm.auto import tqdm
 import subprocess
 import shutil
-
+from pathlib import Path
 
 CKPT_PATH="/root/checkpoint"
 
@@ -89,3 +89,74 @@ def getdatasethf(
     except Exception:
         print(f"The dataset is not found. Run push_dataset() first:")
         print(f"python .py push_dataset")
+        
+
+
+
+def snapshot_comfy(models_dir:str,repo_id:str,allow_patterns:dict,ignore_patterns:list=[],max_workers=8):
+    
+    allow_patterns_list=[hf_path for hf_path,symlink_path in allow_patterns.items()]
+    
+    local_dir=Path(f"{models_dir}/{repo_id}")
+    local_dir.mkdir(parents=True,exist_ok=True)
+    
+    
+    try:
+        models=snapshot_download(
+            repo_id=repo_id,
+            local_dir=local_dir,
+            ignore_patterns=ignore_patterns,
+            allow_patterns=allow_patterns_list,
+            max_workers=max_workers,
+            tqdm_class=tqdm
+        )
+        print(f"downloaded to {local_dir}")
+        
+    except Exception as e:
+        print(f"failed to download {repo_id}")
+        print(f"error : {e}")
+    
+    for hf_path,symlink_path in allow_patterns.items():
+        try:
+            subprocess.run(
+                f"ln -s {models}/{hf_path} {symlink_path}",
+                shell=True,
+                check=True
+            )
+            
+        except Exception as e:
+            print(f"failed to make symlink for {hf_path}")
+            print(f"error : {e}")
+    
+            
+def hf_hub_comfy(models_dir:str,repo_id:str,filename:dict):
+    
+    local_dir=Path(f"{models_dir}/{repo_id}")
+    local_dir.mkdir(parents=True,exist_ok=True)
+    
+    for hf_path,symlink_path in filename.items():
+        
+        try:
+            models=hf_hub_download(
+                repo_id=repo_id,
+                local_dir=local_dir,
+                filename=hf_path,
+                tqdm_class=tqdm
+            )
+            print(f"downloaded to {local_dir}")
+            
+        except Exception as e:
+            print(f"failed to download {repo_id}")
+            print(f"error : {e}")
+    
+    
+        try:
+            subprocess.run(
+                f"ln -s {models} {symlink_path}",
+                shell=True,
+                check=True
+            )
+            
+        except Exception as e:
+            print(f"failed to make symlink for {hf_path}")
+            print(f"error : {e}")
