@@ -16,7 +16,7 @@ class myDataset(BaseModel):
     shrink_video_to_frames:bool=True
     flip_x:bool=False
     flip_y:bool=False
-    num_repeats:int=2
+    num_repeats:int=1
     
     machine:int=1
     
