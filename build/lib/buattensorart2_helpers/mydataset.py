@@ -46,14 +46,23 @@ class myDataset(BaseModel):
     @computed_field
     @property
     def control_path_1(self) -> str:
-        return f"/root/{self.control_path_local_1.rstrip('/').split('/')[-1]}"
+        if self.control_path_local_1:
+            return f"/root/{self.control_path_local_1.rstrip('/').split('/')[-1]}"
+        else:
+            return None
     
     @computed_field
     @property
     def control_path_2(self) -> str:
-        return f"/root/{self.control_path_local_2.rstrip('/').split('/')[-1]}"
+        if self.control_path_local_2:
+            return f"/root/{self.control_path_local_2.rstrip('/').split('/')[-1]}"
+        else:
+            return None
     
     @computed_field
     @property
     def control_path_3(self) -> str:
-        return f"/root/{self.control_path_local_3.rstrip('/').split('/')[-1]}"
+        if self.control_path_local_3:
+            return f"/root/{self.control_path_local_3.rstrip('/').split('/')[-1]}"
+        else:
+            return None
