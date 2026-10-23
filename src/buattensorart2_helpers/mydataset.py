@@ -17,9 +17,9 @@ class myDataset(BaseModel):
     flip_x:bool=False
     flip_y:bool=False
     num_repeats:int=1
-    control_path_1:str=None
-    control_path_2:str=None
-    control_path_3:str=None
+    control_path_local_1:str=None
+    control_path_local_2:str=None
+    control_path_local_3:str=None
     
     machine:int=1
     
@@ -34,7 +34,6 @@ class myDataset(BaseModel):
     def dataset_name(self) -> str:
         return self.dataset_local_path.rstrip('/').split('/')[-1]
 
-    
     @property
     def dataset_dir_path(self) -> str:
         return f"/root/{self.dataset_name}"
@@ -43,3 +42,18 @@ class myDataset(BaseModel):
     @property
     def folder_path(self) -> str:
         return self.dataset_dir_path
+    
+    @computed_field
+    @property
+    def control_path_1(self) -> str:
+        return self.control_path_local_1
+    
+    @computed_field
+    @property
+    def control_path_2(self) -> str:
+        return self.control_path_local_2
+    
+    @computed_field
+    @property
+    def control_path_3(self) -> str:
+        return self.control_path_local_3
