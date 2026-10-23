@@ -1,7 +1,7 @@
 from pydantic import BaseModel,computed_field, Field, model_validator
 
 class myDataset(BaseModel):
-    dataset_local_path:str = Field(exclude=True)     
+        
     cache_latents_to_disk:bool=True
     resolution:list=[512]
     num_frames:int=1
@@ -17,9 +17,11 @@ class myDataset(BaseModel):
     flip_x:bool=False
     flip_y:bool=False
     num_repeats:int=1
-    control_path_local_1:str=None
-    control_path_local_2:str=None
-    control_path_local_3:str=None
+    
+    dataset_local_path:str = Field(exclude=True) 
+    control_path_local_1:str=Field(exclude=True,default=None) 
+    control_path_local_2:str=Field(exclude=True,default=None) 
+    control_path_local_3:str=Field(exclude=True,default=None) 
     
     machine:int=1
     
