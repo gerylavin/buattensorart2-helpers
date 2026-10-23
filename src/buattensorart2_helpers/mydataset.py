@@ -17,6 +17,9 @@ class myDataset(BaseModel):
     flip_x:bool=False
     flip_y:bool=False
     num_repeats:int=1
+    control_path_1:str=None
+    control_path_2:str=None
+    control_path_3:str=None
     
     machine:int=1
     
