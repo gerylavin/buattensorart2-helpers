@@ -1,7 +1,7 @@
 import yaml
 import os
 
-def trainYamlMake(config_data:str,arch:str,config_file_path:str):
+def trainYamlMake(config_data:dict,arch:str,config_file_path:str):
     '''
     to create train.yaml, a config file for finetuning using ai-tookit on google colab, kaggle. etc.
     
