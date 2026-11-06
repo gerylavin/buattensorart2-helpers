@@ -18,7 +18,7 @@ def snapshot(repo_id,ckpt_pth=CKPT_PATH,ignore=[],allow_patterns=["*"]):
             cache_dir="/cache",
             ignore_patterns=ignore,
             allow_patterns=allow_patterns,
-            max_workers=32,
+            max_workers=1,
             tqdm_class=tqdm
             
         )
@@ -77,7 +77,8 @@ def getdatasethf(
         snapshot_download(
             repo_id=repo_id,
             allow_patterns=allow_patterns,
-            local_dir="/root"
+            local_dir="/root",
+            max_workers=128
         )
         
         for i in mydatasets:
@@ -160,3 +161,6 @@ def hf_hub_comfy(models_dir:str,repo_id:str,filename:dict):
         except Exception as e:
             print(f"failed to make symlink for {hf_path}")
             print(f"error : {e}")
+            
+            
+
