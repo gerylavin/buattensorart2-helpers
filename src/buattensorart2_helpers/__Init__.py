@@ -7,5 +7,6 @@ from .upload_download_hf import (
     hf_hub_comfy as hf_hub_comfy
 )
 from .trainyamlmake import trainYamlMake as trainYamlMake
+from .krea2_helpers import make_payload_dict as make_payload_dict
 
-__all__ = ["myDataset", "snapshot", "hf_hub", "getdatasethf"]
+__all__ = ["myDataset", "getdatasethf", "hf_hub", "snapshot", "snapshot_comfy", "hf_hub_comfy", "trainYamlMake", "make_payload_dict"]

@@ -2,6 +2,7 @@ LICENSE
 README.md
 pyproject.toml
 src/buattensorart2_helpers/__init__.py
+src/buattensorart2_helpers/krea2_helpers.py
 src/buattensorart2_helpers/mydataset.py
 src/buattensorart2_helpers/trainyamlmake.py
 src/buattensorart2_helpers/upload_download_hf.py
